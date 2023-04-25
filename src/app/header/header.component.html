@@ -26,6 +26,11 @@
           </ul>
         </li>
         <li><a class="nav-link scrollto" [routerLink] ="['servicio de ayuda ']">SERVICIO DE AYUDA</a></li>
+        <br><br>
+        <a [routerLink]="['inicio']" (click)="cerrarsesion()" *ngIf="usuario_activo==true">
+          <i class="fa-solid fa-right-from-bracket"></i>cerrar Sesion
+          <br><br>
+        </a>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->

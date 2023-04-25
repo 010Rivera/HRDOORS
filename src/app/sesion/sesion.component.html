@@ -1,1 +1,21 @@
-<p>sesion works!</p>
+<form>
+  <div>
+    <br><br>
+    <section class="form-register">
+    <label>
+      CORREO ELECTRONICO 
+    </label>
+    <br>
+    <input class="controls" type="email" name="correo"[(ngModel)] ="form.correo"  name="correo"placeholder="escribe tu correo">
+    <br><br>
+    <label >
+      CONTRASEÑA 
+    </label>
+    <br>
+    <input class="controls" type="password"[(ngModel)] ="form.contrasena" name="contrasena" placeholder="debe tener 8 caracteres">
+    <br>
+    <button class="botons" [routerLink]="['diseno']" (click)="iniciarsesion()"> ingresar <i class="fa-sign-in-alt"></i></button>
+    <a href="registro">no tienes cuenta registrate</a>
+  </section>
+</div>
+</form>

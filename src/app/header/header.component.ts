@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CargarscriptsService } from 'src/app/cargarscripts.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +9,10 @@ import { CargarscriptsService } from 'src/app/cargarscripts.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent  implements OnInit{
-  constructor(private cargarscripts: CargarscriptsService){
+
+  usuario_activo: boolean | undefined
+
+  constructor(private cargarscripts: CargarscriptsService , private auth: AngularFireAuth,private router:Router){
     cargarscripts.carga([ 
       "./assets/vendor/aos/aos.js",
     "./assets/vendor/bootstrap/js/bootstrap.bundle.min.js",
@@ -19,7 +24,29 @@ export class HeaderComponent  implements OnInit{
     ])
   }
 ngOnInit(): void {
-  
+  this.auth.authState.subscribe(user=>{
+    if (user){
+      this.usuario_activo=true
+    }
+    else{
+      this.usuario_activo=false 
+    }
+})
+
 }
 
+cerrarsesion(){
+  this.auth.authState.subscribe(user=>{
+    if (user){
+      this.auth.signOut().then(() => {
+        localStorage.removeItem('user');
+        alert("!Sesion Finalizada!")
+        window.location.reload()
+      })
+    }
+    else{
+      this.router.navigate(['/inicio'])
+    }
+  })
+}
 }
