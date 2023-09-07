@@ -21,12 +21,16 @@ import { DisenoComponent } from './content/diseno/diseno.component';
 import { MaterialesComponent } from './content/materiales/materiales.component';
 import { ServiciodeayudaComponent } from './content/serviciodeayuda/serviciodeayuda.component';
 import { TipodepuertaComponent } from './content/tipodepuerta/tipodepuerta.component';
+import { LaminadaComponent } from './content/laminada/laminada.component';
+
 
 import { FormsModule } from '@angular/forms';
 import {AngularFireModule} from '@angular/fire/compat';
 
 
+
 const appRoutes:Routes=[
+  {path:'', component: InicioComponent},
   {path:'inicio', component: InicioComponent},
   {path:'accesorios', component: AccesoriosComponent},
   {path:'descuento' , component:DescuentoComponent},
@@ -36,6 +40,7 @@ const appRoutes:Routes=[
   { path:'tipo de puerta', component:TipodepuertaComponent},
   { path:'registro',component:RegistroComponent},
   { path:'sesion',component:SesionComponent},
+  { path:'laminada',component:LaminadaComponent},
 ];
 
 @NgModule({
@@ -47,7 +52,8 @@ const appRoutes:Routes=[
     InicioComponent,
     FooterComponent,
     RegistroComponent,
-    SesionComponent
+    SesionComponent,
+    LaminadaComponent
   ],
   imports: [
     BrowserModule,
